@@ -1,0 +1,6 @@
+ "Accuracy" refers to how close a measurement is to the true value, whereas "precision" has to do with how much information you have about a quantity, how uniquely you have it pinned down. 
+
+ Integer = accuracy
+
+ Float 4 byes
+ Double 8bytes
