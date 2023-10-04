@@ -6,7 +6,7 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 21:10:07 by lduheron          #+#    #+#             */
-/*   Updated: 2023/10/04 22:45:24 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/10/05 01:14:34 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ int	main(void)
 	Fixed a;
 	Fixed const b( Fixed( 5.05f ) * Fixed( 2 ) );
 
-	std::cout << b << std::endl;
 	std::cout << a << std::endl;
 	std::cout << ++a << std::endl;
 	std::cout << a << std::endl;

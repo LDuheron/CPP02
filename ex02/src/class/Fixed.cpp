@@ -6,7 +6,7 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 21:07:13 by lduheron          #+#    #+#             */
-/*   Updated: 2023/10/04 22:52:55 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/10/05 01:22:35 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -221,17 +221,30 @@ float	Fixed::toFloat( void ) const
 	return ((float)this->_value / (1 << _bits));
 }
 
-static int &  	Fixed::min(int a, int b)
+Fixed	&Fixed::min(Fixed &a, Fixed &b)
 {
 	if (a < b)
 		return (a);
 	return (b);
 }
 
-static int &  	Fixed::max(int a, int b)
+Fixed	&Fixed::max(Fixed &a, Fixed &b)
 {
 	if (a > b)
 		return (a);
 	return (b);
 }
 
+const Fixed	Fixed::min(Fixed & a, Fixed & b)
+{
+	if (a < b)
+		return (a);
+	return (b);
+}
+
+const Fixed	Fixed::max(Fixed & a, Fixed & b)
+{
+	if (a > b)
+		return (a);
+	return (b);
+}
