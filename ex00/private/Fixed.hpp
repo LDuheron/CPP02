@@ -7,8 +7,8 @@
 class Fixed
 {
 	private:
-		int	_value;
-		static int const _bits;
+		int					_value;
+		static int const	_bits;
 
 	public:
 
@@ -18,12 +18,8 @@ class Fixed
 
 		Fixed &		operator=( Fixed const & rhs );
 
-		int		getRawBits( void );
-		void	setRawBits( int const raw);
-
-
+		int		getRawBits( void ) const;
+		void	setRawBits( int const raw );
 };
 
-std::ostream &			operator<<( std::ostream & o, Fixed const & i );
-
-#endif /* *********************************************************** FIXED_H */
+#endif

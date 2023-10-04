@@ -6,55 +6,54 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 21:07:13 by lduheron          #+#    #+#             */
-/*   Updated: 2023/10/03 21:25:54 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/10/04 18:42:32 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 
+int const	Fixed::_bits(8);
+
 // Constructor
 Fixed::Fixed()
 {
-	std::cout << "Constructor called";
-	setRawBits(8);
+	std::cout << "Default constructor called" << std::endl;
+	this->_value = 0;
 }
 
 Fixed::Fixed( const Fixed & src )
 {
-	std::cout << "Constructor called";
-	setRawBits(8);
+	std::cout << "Copy constructor called" << std::endl;
+	// this->_value = src._value;
+	this->_value = src.getRawBits();
 }
 
 // Destructor
 Fixed::~Fixed()
 {
-	std::cout << "Destructor called";
+	std::cout << "Destructor called" << std::endl;
 }
 
 // Overload
-Fixed &				Fixed::operator=( Fixed const & rhs )
+Fixed &				Fixed::operator=(Fixed const & rhs )
 {
-	//if ( this != &rhs )
-	//{
-		//this->_value = rhs.getValue();
-	//}
+	std::cout << "Copy assignment operator called" << std::endl;
+	if ( this != &rhs )
+	{
+		this->_value = rhs.getRawBits();
+	}
 	return *this;
 }
 
-std::ostream &			operator<<( std::ostream & o, Fixed const & i )
-{
-	//o << "Value = " << i.getValue();
-	return o;
-}
-
-int	Fixed::getRawBits( void )
+// Functions
+int	Fixed::getRawBits( void ) const
 {
 	std::cout << "getRawBits member functon called" << std::endl;
-	return (_bits);
+	return (this->_value);
 }
 
 void	Fixed::setRawBits( int const raw)
 {
 	std::cout << "setRawBits member functon called" << std::endl;
-	_bits = raw;
+	this->_value = raw;
 }
