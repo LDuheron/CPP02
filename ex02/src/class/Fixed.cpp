@@ -6,7 +6,7 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 21:07:13 by lduheron          #+#    #+#             */
-/*   Updated: 2023/10/05 12:12:55 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/10/05 16:37:20 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ Fixed::Fixed( float const src)
 	this->_value =(roundf(src * (1 << _bits)));
 }
 
-
 // Destructor ------------------------------------------------------------------
 
 Fixed::~Fixed()
@@ -61,7 +60,7 @@ Fixed &				Fixed::operator=(Fixed const & rhs )
 	return *this;
 }
 
-// Operateurs de comparaison ---------------------------------------------------
+// Comparison operators ---------------------------------------------------
 
 bool		Fixed::operator>(Fixed const & rhs ) const
 {
@@ -112,7 +111,7 @@ bool			Fixed::operator!=(Fixed const & rhs ) const
 }
 
 
-// Operateurs arithmetique -----------------------------------------------------
+// Arithmetic operators -----------------------------------------------------
 
 Fixed &				Fixed::operator+(Fixed const & rhs )
 {
@@ -154,7 +153,7 @@ Fixed &				Fixed::operator/(Fixed const & rhs )
 	return *this;
 }
 
-// Operateurs incrementation et decrementation --------------------------------
+// Incrementation and decrementation operators --------------------------------
 
 Fixed &				Fixed::operator++() // Prefix incrementation ++a
 {
@@ -163,25 +162,30 @@ Fixed &				Fixed::operator++() // Prefix incrementation ++a
 	return *this;
 }
 
-Fixed				Fixed::operator++( int ) // Postfix incrementation a++
-{
-	// std::cout << "Copy assignment operator called" << std::endl;
-	this->_value++;
-	return *this;
-}
-
-Fixed &				Fixed::operator--()
+Fixed &				Fixed::operator--() // Prefix decrementation --a
 {
 	// std::cout << "Copy assignment operator called" << std::endl;
 	--this->_value;
 	return *this;
 }
 
-Fixed				Fixed::operator--( int )
+Fixed				Fixed::operator++( int ) // Postfix incrementation a++
 {
+	Fixed cpy(*this);
+
 	// std::cout << "Copy assignment operator called" << std::endl;
-	this->_value--;
-	return *this;
+	++this->_value;
+	return cpy;
+}
+
+
+Fixed				Fixed::operator--( int ) // Postfix decrementation a--
+{
+	Fixed cpy(*this);
+
+	// std::cout << "Copy assignment operator called" << std::endl;
+	--this->_value;
+	return cpy;
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -218,6 +222,9 @@ float	Fixed::toFloat( void ) const
 {
 	return ((float)this->_value / (1 << _bits));
 }
+
+
+// Static member functions overloads -------------------------------------------
 
 Fixed	&	Fixed::min(Fixed &a, Fixed &b)
 {
