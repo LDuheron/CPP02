@@ -35,43 +35,18 @@ class Fixed
 
 		bool		operator>(Fixed const & rhs ) const ;
 		bool		operator<(Fixed const & rhs ) const ;
-		bool		operator>=(Fixed const & rhs );
-		bool		operator<=(Fixed const & rhs );
-		bool		operator==(Fixed const & rhs );
-		bool		operator!=(Fixed const & rhs );
+		bool		operator>=(Fixed const & rhs ) const ;
+		bool		operator<=(Fixed const & rhs ) const ;
+		bool		operator==(Fixed const & rhs ) const ;
+		bool		operator!=(Fixed const & rhs ) const ;
 
-		static Fixed	&	min(Fixed &a, Fixed &b)
-		{
-			if (a._value < b._value)
-				return (a);
-			return (b);
-		}
-	
-		static Fixed	&	max(Fixed &a, Fixed &b)
-		{
-			if (a._value > b._value)
-				return (a);
-			return (b);
-		}
-
-		static const Fixed	 & min(Fixed const & a, Fixed const & b)
-		{
-			if (a._value > b._value)
-				return (a);
-			return (b);
-		}
-	
-		static const Fixed	& max(Fixed const &a, Fixed const & b)
-		{
-			if (a._value > b._value)
-			return (a);
-			return (b);
-		}
+		static Fixed	&	min(Fixed &a, Fixed &b);
+		static Fixed	&	max(Fixed &a, Fixed &b);
+		static const Fixed	 & min(Fixed const & a, Fixed const & b);
+		static const Fixed	& max(Fixed const &a, Fixed const & b);
 
 		int		getRawBits( void ) const;
 		void	setRawBits( int const raw );
-
-		int		toInt(float src );
 
 		int		toInt( void ) const;
 		float	toFloat( void ) const;

@@ -6,7 +6,7 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 21:07:13 by lduheron          #+#    #+#             */
-/*   Updated: 2023/10/04 20:13:50 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/10/05 12:13:57 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,13 +72,13 @@ std::ostream	&operator<<(std::ostream &lhs, Fixed const &rhs)
 
 int	Fixed::getRawBits( void ) const
 {
-	std::cout << "getRawBits member functon called" << std::endl;
+	std::cout << "getRawBits member function called" << std::endl;
 	return (this->_value);
 }
 
 void	Fixed::setRawBits( int const raw)
 {
-	std::cout << "setRawBits member functon called" << std::endl;
+	std::cout << "setRawBits member function called" << std::endl;
 	this->_value = raw;
 }
 
