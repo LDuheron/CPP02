@@ -6,7 +6,7 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 21:07:13 by lduheron          #+#    #+#             */
-/*   Updated: 2023/10/05 01:22:35 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/10/05 02:35:51 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,19 +25,28 @@ Fixed::Fixed()
 Fixed::Fixed( const Fixed & src )
 {
 	// std::cout << "Copy constructor called" << std::endl;
+	// if (!src)
+	// 	src = 0;
+	// else
+
+	// std::cout << "src in copy constructor : " << src._value << std::endl;
 	this->_value = src._value;
+	// std::cout << "in copy constructor : " << this->_value << std::endl;
 }
 
 Fixed::Fixed( int const src)
 {
 	// std::cout << "Int constructor called" << std::endl;
-	this->_value = src << _bits;
+	this->_value = src;
 }
 
 Fixed::Fixed( float const src)
 {
 	// std::cout << "Float constructor called" << std::endl;
-	this->_value = roundf(src * (1 << _bits));
+	// std::cout << "in float constructor : " << src << std::endl;
+
+	this->_value =(roundf(src * (1 << _bits)));
+	// std::cout << "in float constructor : " << this->_value << std::endl;
 }
 
 
@@ -48,6 +57,11 @@ Fixed::~Fixed()
 	// std::cout << "Destructor called" << std::endl;
 }
 
+// int		Fixed::toInt(float src )
+// {
+// 	// src = src._value >> _bits;
+// 	return (src >> _bits);
+// }
 
 // Overload  -------------------------------------------------------------------
 
@@ -58,6 +72,7 @@ Fixed &				Fixed::operator=(Fixed const & rhs )
 	{
 		this->_value = rhs._value;
 	}
+	std::cout << this->_value << std::endl;
 	return *this;
 }
 
@@ -65,7 +80,7 @@ Fixed &				Fixed::operator=(Fixed const & rhs )
 
 // Operateurs de comparaison ---------------------------------------------------
 
-bool			Fixed::operator>(Fixed const & rhs )
+bool		Fixed::operator>(Fixed const & rhs ) const
 {
 	// std::cout << "Comparison operator called" << std::endl;
 	if (this->_value > rhs._value)
@@ -73,7 +88,7 @@ bool			Fixed::operator>(Fixed const & rhs )
 	return (false);
 }
 
-bool			Fixed::operator<(Fixed const & rhs )
+bool			Fixed::operator<(Fixed const & rhs ) const
 {
 	// std::cout << "Comparison operator called" << std::endl;
 	if (this->_value < rhs._value)
@@ -139,10 +154,13 @@ Fixed &				Fixed::operator-(Fixed const & rhs )
 Fixed &				Fixed::operator*(Fixed const & rhs )
 {
 	// std::cout << "Copy assignment operator called" << std::endl;
+	// std::cout << "lhs : " << this->_value << std::endl;
+	// std::cout << "rhs : " << rhs << std::endl;
 	if ( this != &rhs )
 	{
 		this->_value = this->_value * rhs._value;
 	}
+	// std::cout << "this value : " << this->_value << std::endl;
 	return *this;
 }
 
@@ -223,28 +241,28 @@ float	Fixed::toFloat( void ) const
 
 Fixed	&Fixed::min(Fixed &a, Fixed &b)
 {
-	if (a < b)
+	if (a._value < b._value)
 		return (a);
 	return (b);
 }
 
 Fixed	&Fixed::max(Fixed &a, Fixed &b)
 {
-	if (a > b)
+	if (a._value > b._value)
 		return (a);
 	return (b);
 }
 
-const Fixed	Fixed::min(Fixed & a, Fixed & b)
+const Fixed	& Fixed::min(Fixed const & a, Fixed const & b)
 {
-	if (a < b)
+	if (a._value < b._value)
 		return (a);
 	return (b);
 }
 
-const Fixed	Fixed::max(Fixed & a, Fixed & b)
+const Fixed	& Fixed::max(Fixed const &a, Fixed const &b)
 {
-	if (a > b)
+	if (a._value > b._value)
 		return (a);
 	return (b);
 }
