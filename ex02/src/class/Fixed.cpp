@@ -6,7 +6,7 @@
 /*   By: lduheron <lduheron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 21:07:13 by lduheron          #+#    #+#             */
-/*   Updated: 2023/10/05 02:35:51 by lduheron         ###   ########.fr       */
+/*   Updated: 2023/10/05 02:56:49 by lduheron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -239,30 +239,26 @@ float	Fixed::toFloat( void ) const
 	return ((float)this->_value / (1 << _bits));
 }
 
-Fixed	&Fixed::min(Fixed &a, Fixed &b)
-{
-	if (a._value < b._value)
-		return (a);
-	return (b);
-}
+// Fixed	&Fixed::min(Fixed &a, Fixed &b)
+// {
+// 	if (a._value < b._value)
+// 		return (a);
+// 	return (b);
+// }
 
-Fixed	&Fixed::max(Fixed &a, Fixed &b)
-{
-	if (a._value > b._value)
-		return (a);
-	return (b);
-}
+// Fixed	&Fixed::max(Fixed &a, Fixed &b)
+// {
+// 	if (a._value > b._value)
+// 		return (a);
+// 	return (b);
+// }
 
-const Fixed	& Fixed::min(Fixed const & a, Fixed const & b)
-{
-	if (a._value < b._value)
-		return (a);
-	return (b);
-}
+// const Fixed	& Fixed::min(Fixed const & a, Fixed const & b) const
+// {
+// 	if (a._value < b._value)
+// 		return (a);
+// 	return (b);
+// }
 
-const Fixed	& Fixed::max(Fixed const &a, Fixed const &b)
-{
-	if (a._value > b._value)
-		return (a);
-	return (b);
-}
+// static const Fixed	& Fixed::max(Fixed const &a, Fixed const &b)
+

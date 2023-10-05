@@ -40,10 +40,33 @@ class Fixed
 		bool		operator==(Fixed const & rhs );
 		bool		operator!=(Fixed const & rhs );
 
-		Fixed	&	min(Fixed &a, Fixed &b);
-		Fixed	&	max(Fixed &a, Fixed &b);
-		const Fixed	 & min(Fixed const & a, Fixed const & b);
-		const Fixed	& max(Fixed const  &a, Fixed const & b);
+		static Fixed	&	min(Fixed &a, Fixed &b)
+		{
+			if (a._value < b._value)
+				return (a);
+			return (b);
+		}
+	
+		static Fixed	&	max(Fixed &a, Fixed &b)
+		{
+			if (a._value > b._value)
+				return (a);
+			return (b);
+		}
+
+		static const Fixed	 & min(Fixed const & a, Fixed const & b)
+		{
+			if (a._value > b._value)
+				return (a);
+			return (b);
+		}
+	
+		static const Fixed	& max(Fixed const &a, Fixed const & b)
+		{
+			if (a._value > b._value)
+			return (a);
+			return (b);
+		}
 
 		int		getRawBits( void ) const;
 		void	setRawBits( int const raw );
